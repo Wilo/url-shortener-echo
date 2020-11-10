@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/Wilo/url-shortener-echo/domain/models"
@@ -58,5 +59,6 @@ func (u *UrlController) insertEndpoint(ctx echo.Context) error {
 	if err != nil {
 		return ctx.JSON(http.StatusBadRequest, err)
 	}
-	return ctx.JSON(http.StatusCreated, created)
+	response := fmt.Sprintf("http://%s:1323/%s", ctx.RealIP(), created.Hash)
+	return ctx.HTML(http.StatusCreated, response)
 }

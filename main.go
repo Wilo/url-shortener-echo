@@ -36,5 +36,5 @@ func main() {
 	urlController := controllers.NewUrlController(urlService)
 	urlController.InitUrlControllerRouting(server)
 
-	server.Logger.Fatal(server.Start(":1323"))
+	server.Logger.Fatal(server.Start("127.0.0.1:1323"))
 }
